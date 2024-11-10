@@ -21,7 +21,7 @@ namespace EmployeePortal.Repository
         public async Task<Employee> GetEmployeeByIdAsync(int id)
         {
             var employee = await _appDbContext.Employees.FirstOrDefaultAsync(e => e.Id == id);
-            if (employee == null)
+            if (employee is null)
             {
                 throw new EmployeeNotFoundException("Employee with specified ID not found.");
             }
@@ -30,7 +30,7 @@ namespace EmployeePortal.Repository
 
         public async Task AddEmployeeAsync(Employee employee)
         {
-            if (employee == null)
+            if (employee is null)
                 throw new ArgumentNullException(nameof(employee));
 
             await _appDbContext.Employees.AddAsync(employee);
@@ -39,11 +39,11 @@ namespace EmployeePortal.Repository
 
         public async Task UpdateEmployeeAsync(Employee employee)
         {
-            if (employee == null)
+            if (employee is null)
                 throw new ArgumentNullException(nameof(employee));
 
             var existingEmployee = await _appDbContext.Employees.FindAsync(employee.Id);
-            if (existingEmployee == null)
+            if (existingEmployee is null)
             {
                 throw new EmployeeNotFoundException("Employee not found.");
             }
@@ -56,7 +56,7 @@ namespace EmployeePortal.Repository
         {
             var employee = await _appDbContext.Employees.FindAsync(id);
 
-            if (employee == null)
+            if (employee is null)
             {
                 return false;
             }
