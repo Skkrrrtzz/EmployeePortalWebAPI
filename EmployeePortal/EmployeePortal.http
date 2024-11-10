@@ -1,0 +1,19 @@
+@EmployeePortal_HostAddress = https://localhost:7197
+
+GET {{EmployeePortal_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{EmployeePortal_HostAddress}}/api/employees
+
+###
+
+POST {{EmployeePortal_HostAddress}}/api/employees
+Content-Type: application/json
+
+{
+  //Employee
+}
+
+###
